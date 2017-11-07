@@ -6,7 +6,7 @@ Android kotlin application with dagger2 ContributesAndroidInjector.
 - fake api service is injected to the model-s
 
 ext {
-    supportLibraryVersion = '26.0.2'
+    supportLibraryVersion = '27.0.0'
     constraintLayoutVersion = '1.0.2'
     daggerVersion = '2.11'
     rxVersion = '2.1.0'
