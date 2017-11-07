@@ -5,6 +5,7 @@ buildscript {
     ext.android_plugin_version = '3.0.0'
     repositories {
         jcenter()
+        google()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
@@ -28,8 +29,9 @@ task clean(type: Delete) {
 }
 
 ext {
-    supportLibraryVersion = '26.0.2'
+    supportLibraryVersion = '27.0.0'
     constraintLayoutVersion = '1.0.2'
     daggerVersion = '2.11'
     rxVersion = '2.1.0'
+    okHttpVersion = '3.6.0'
 }
