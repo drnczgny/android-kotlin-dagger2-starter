@@ -1,8 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.4'
-    ext.android_plugin_version = '3.0.0'
+    ext.kotlin_version = '1.2.41'
+    ext.android_plugin_version = '3.1.4'
     repositories {
         jcenter()
         google()
@@ -10,10 +10,121 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+
+    ext.versions = [
+            'minSdk'           : 24,
+            'compileSdk'       : 27,
+
+            'buildTools'                : '27.0.3',
+            'androidSupport'            : '27.0.2',
+            'androidPlugin'             : '3.1.4',
+            'constraintLayout'          : '1.0.2',
+            'kotlin'                    : '1.2.41',
+            'koin'                      : '0.9.1',
+            'archComp'                  : '1.1.1',
+            'livedataTesting'           : '1.1.1',
+            'room'                      : '1.0.0',
+            'roomRx'                    : '1.0.0',
+            'roomTesting'               : '1.0.0',
+            'gms'                       : '3.1.0',
+            'dagger'                    : '2.15',
+            'gson'                      : '2.8.2',
+            'retrofit'                  : '2.3.0',
+            'retrofitRxAdapter'         : '1.0.0',
+            'okhttp'                    : '3.9.0',
+            'okhttpDownloader'          : '1.1.0',
+            'picasso'                   : '2.5.2',
+            'rxJava'                    : '2.1.0',
+            'rxAndroid'                 : '2.0.1',
+            'rxJava2RetrofitAdapter'    : '2.3.0',
+            'stetho'                    : '1.5.0',
+            'threetenabp'               : '1.0.5',
+            'jacksonCore'               : '2.0.1',
+            'threetenabp'               : '1.0.5',
+            'junit'                     : '4.12',
+            'atsl'                      : '1.0.1',
+            'mockitoKotlin'             : '1.5.0',
+            'mockitoCore'               : '2.8.9',
+            'robolectric'               : '3.6.1',
+            'sourceCompat'              : JavaVersion.VERSION_1_8,
+            'targetCompat'              : JavaVersion.VERSION_1_8
+    ]
+    ext.deps = [
+            android  : [
+                    'gradlePlugin'      : "com.android.tools.build:gradle:${versions.androidPlugin}",
+                    'lifecycleExt'      : "android.arch.lifecycle:extensions:${versions.archComp}",
+                    'lifecycleCompiler' : "android.arch.lifecycle:compiler:${versions.archComp}",
+                    'lifecycleCommon'   : "android.arch.lifecycle:common-java8:${versions.archComp}",
+                    'roomRuntime'       : "android.arch.persistence.room:runtime:${versions.room}",
+                    'roomCompiler'      : "android.arch.persistence.room:compiler:${versions.room}",
+                    'roomRx'            : "android.arch.persistence.room:rxjava2:${versions.roomRx}",
+            ],
+            support  : [
+                    'appCompat'         : "com.android.support:appcompat-v7:${versions.androidSupport}",
+                    'recyclerView'      : "com.android.support:recyclerview-v7:${versions.androidSupport}",
+                    'cardView'          : "com.android.support:cardview-v7:${versions.androidSupport}",
+                    'support'           : "com.android.support:support-v4:${versions.androidSupport}",
+                    'designSupport'     : "com.android.support:design:${versions.androidSupport}",
+                    'constraintLayout'  : "com.android.support.constraint:constraint-layout:1.0.2",
+            ],
+            kotlin   : [
+                    'gradlePlugin'  : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                    'stdlibJre7'    : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}",
+                    'stdlib'        : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+                    'koin'          : "org.koin:koin-android-architecture:${versions.koin}",
+            ],
+            databinding : [
+                    'databinding'    : "com.android.databinding:compiler:${versions.androidPlugin}"
+            ],
+            dagger : [
+                    'dagger'                 : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerSupport'          : "com.google.dagger:dagger-android-support:${versions.dagger}",
+                    'daggerCompiler'         : "com.google.dagger:dagger-compiler:${versions.dagger}",
+                    'daggerAndroidProcessor' : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            ],
+            reactivex: [
+                    'rxJava'   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+                    'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+            ],
+            google   : [
+                    'gmsPlugin'      : "com.google.gms:google-services:${versions.gms}",
+                    'gson'           : "com.google.code.gson:gson:${versions.gson}",
+            ],
+            square   : [
+                    'retrofit'                      : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'gsonConverter'                 : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'scalarsConverter'              : "com.squareup.retrofit2:converter-scalars:${versions.rxJava}",
+                    'okhttp'                        : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+                    'picasso'                       : "com.squareup.picasso:picasso:${versions.picasso}",
+                    'okhttpDownloader'              : "com.jakewharton.picasso:picasso2-okhttp3-downloader:${versions.okhttpDownloader}",
+                    'squareupRetrofitRxAdapter'     : "com.squareup.retrofit2:adapter-rxjava2:${versions.rxJava2RetrofitAdapter}",
+                    'jakewhartonRetrofitRxAdapter'  : "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${versions.retrofitRxAdapter}",
+            ],
+            facebook : [
+                    'stetho'                : "com.facebook.stetho:stetho:${versions.stetho}",
+                    'networkInterceptor'    : "com.facebook.stetho:stetho-okhttp3:${versions.stetho}"
+            ],
+            thirdparty: [
+                    'jacksonCore'            : "com.fasterxml.jackson.core:jackson-databind:${versions.jacksonCore}",
+                    'threetenabpJakewharton' : "com.jakewharton.threetenabp:threetenabp:1.0.5",
+            ],
+            test     : [
+                    'junit'          : "junit:junit:${versions.junit}",
+                    'atslRunner'     : "com.android.support.test:runner:${versions.atsl}",
+                    'atslRules'      : "com.android.support.test:rules:${versions.atsl}",
+                    'mockitoKotlin'  : "com.nhaarman:mockito-kotlin:${versions.mockitoKotlin}",
+                    'mockitoCore'    : "org.mockito:mockito-core:${versions.mockitoCore}",
+                    'robolectric'    : "org.robolectric:robolectric:${versions.robolectric}",
+                    'mockWebServer'  : "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
+                    'roomTesting'    : "android.arch.persistence.room:testing:${versions.roomTesting}",
+                    'livedataTesting': "android.arch.core:core-testing:${versions.livedataTesting}",
+            ]
+    ]
 }
 
 allprojects {
@@ -26,12 +137,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-ext {
-    supportLibraryVersion = '27.0.0'
-    constraintLayoutVersion = '1.0.2'
-    daggerVersion = '2.11'
-    rxVersion = '2.1.0'
-    okHttpVersion = '3.6.0'
 }
