@@ -5,12 +5,12 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-allopen'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+//    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.adrian.project"
         minSdkVersion 24
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -51,7 +51,7 @@ dependencies {
     implementation deps.kotlin.koin
 
     // databinding
-    kapt deps.databinding.databinding
+//    kapt deps.databinding.databinding     // not need from 3.2.0
 
     // support lib
     implementation deps.support.appCompat
